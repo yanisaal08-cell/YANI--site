@@ -12,30 +12,31 @@
 
 body{
   margin:0;
-  background:#0a0a0c;
-  color:#eee;
+  background:#0b0b0d;
+  color:#eee8dc;
   font-family:Arial,sans-serif;
 }
 
 nav{
   position:sticky;
   top:0;
-  background:#0a0a0cdd;
+  background:#0b0b0ddd;
   backdrop-filter:blur(10px);
   padding:18px;
   text-align:center;
-  border-bottom:1px solid #222;
+  border-bottom:1px solid #302820;
   z-index:10;
 }
 
 nav a{
-  color:#aaa;
+  color:#aaa49a;
   text-decoration:none;
   margin:0 12px;
+  transition:color .25s ease;
 }
 
 nav a:hover{
-  color:#fff;
+  color:#d6b45a;
 }
 
 main{
@@ -53,43 +54,52 @@ main{
   font-size:58px;
   margin:0 0 10px;
   letter-spacing:5px;
+  color:#d6b45a;
+  animation:floatTitle 4s ease-in-out infinite;
 }
 
 .hero p{
-  color:#999;
+  color:#aaa39a;
   font-size:18px;
 }
 
 section{
   padding:55px 0;
-  border-top:1px solid #202024;
+  border-top:1px solid #25201b;
 }
 
 .card{
-  background:#111115;
-  border:1px solid #24242a;
+  background:#15120f;
+  border:1px solid #302820;
   border-radius:18px;
   padding:25px;
   margin-top:18px;
+  transition:border-color .3s ease, transform .3s ease;
+}
+
+.card:hover{
+  border-color:#5a4528;
+  transform:translateY(-2px);
 }
 
 h2{
   font-size:28px;
   margin-bottom:15px;
+  color:#d8c7a0;
 }
 
 p{
   line-height:1.8;
-  color:#bbb;
+  color:#bbb5aa;
 }
 
 input,
 textarea,
 select{
   width:100%;
-  background:#0b0b0e;
-  color:#fff;
-  border:1px solid #303038;
+  background:#0d0c0d;
+  color:#eee8dc;
+  border:1px solid #3a3026;
   border-radius:10px;
   padding:13px;
   margin:7px 0;
@@ -101,7 +111,7 @@ input:focus,
 textarea:focus,
 select:focus{
   outline:none;
-  border-color:#666;
+  border-color:#d6b45a;
 }
 
 select{
@@ -109,8 +119,8 @@ select{
 }
 
 select option{
-  background:#111115;
-  color:#fff;
+  background:#15120f;
+  color:#eee8dc;
 }
 
 textarea{
@@ -119,44 +129,69 @@ textarea{
 }
 
 button{
-  background:#eee;
-  color:#111;
+  background:#d6b45a;
+  color:#17130e;
   border:0;
   border-radius:10px;
   padding:12px 22px;
   cursor:pointer;
   font-weight:bold;
   margin-top:8px;
+  transition:background .25s ease, transform .25s ease;
 }
 
 button:hover{
-  background:#fff;
+  background:#ead28a;
+  transform:translateY(-1px);
 }
 
 .note{
   font-size:13px;
-  color:#777;
+  color:#777168;
   margin-top:15px;
 }
 
 .message{
-  border-top:1px solid #29292e;
+  border-top:1px solid #29231e;
   padding:15px 0;
 }
 
 .message strong{
-  color:#eee;
+  color:#eee8dc;
 }
 
 .message span{
-  color:#999;
+  color:#999188;
   font-size:13px;
 }
 
 footer{
   text-align:center;
-  color:#666;
+  color:#66615b;
   padding:40px;
+}
+
+@keyframes floatTitle{
+  0%,100%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(-5px);
+  }
+}
+
+@media(max-width:600px){
+
+  .hero h1{
+    font-size:45px;
+  }
+
+  nav a{
+    margin:0 6px;
+    font-size:14px;
+  }
+
 }
 </style>
 </head>
