@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
 
 <meta charset="UTF-8">
@@ -10,7 +11,7 @@
 
 <meta
   name="description"
-  content="Yani Saal — personal website about programming, technology, anime, games, music, goals and things I like."
+  content="Yani Saal — personal website about technology, anime, games, music, goals and things I like."
 >
 
 <meta
@@ -327,7 +328,7 @@ p{
 
 
 /* =========================
-   CARDS
+   GENERAL CARD
 ========================= */
 
 .card{
@@ -372,32 +373,43 @@ p{
   grid-template-columns:
     repeat(2,1fr);
 
-  gap:16px;
+  gap:18px;
 
-  margin-top:22px;
+  margin-top:25px;
 }
 
 .like-card{
-  background:#13110f;
+  background:
+    linear-gradient(
+      145deg,
+      #15120f,
+      #100f0e
+    );
 
   border:1px solid #302820;
 
-  border-radius:18px;
+  border-radius:20px;
 
-  padding:23px;
+  padding:22px;
+
+  overflow:hidden;
 
   transition:
-    transform .3s ease,
-    border-color .3s ease,
-    background .3s ease;
+    transform .35s ease,
+    border-color .35s ease,
+    background .35s ease,
+    box-shadow .35s ease;
 }
 
 .like-card:hover{
-  transform:translateY(-5px);
+  transform:translateY(-6px);
 
   border-color:#5a4528;
 
   background:#18140f;
+
+  box-shadow:
+    0 15px 35px rgba(0,0,0,.3);
 }
 
 .like-icon{
@@ -411,7 +423,7 @@ p{
 
   margin:0 0 8px;
 
-  font-size:19px;
+  font-size:20px;
 }
 
 .like-card p{
@@ -419,116 +431,45 @@ p{
 
   font-size:14px;
 
-  line-height:1.6;
+  line-height:1.65;
 
   color:#918a80;
 }
 
 
 /* =========================
-   CURRENTLY
+   LIKE IMAGES
 ========================= */
 
-.current-list{
-  display:grid;
+.like-image{
+  width:100%;
 
-  gap:12px;
+  height:190px;
 
-  margin-top:20px;
-}
+  object-fit:cover;
 
-.current-item{
-  display:flex;
-
-  align-items:center;
-
-  gap:15px;
-
-  padding:15px 17px;
-
-  background:#0f0e0d;
-
-  border:1px solid #29231e;
-
-  border-radius:14px;
-}
-
-.current-icon{
-  width:38px;
-  height:38px;
-
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
-
-  border-radius:10px;
-
-  background:#1c1712;
-
-  font-size:18px;
-}
-
-.current-text{
-  flex:1;
-}
-
-.current-text strong{
   display:block;
 
-  color:#d8c7a0;
-
-  font-size:14px;
-
-  margin-bottom:3px;
-}
-
-.current-text span{
-  color:#888078;
-
-  font-size:13px;
-}
-
-
-/* =========================
-   SKILLS
-========================= */
-
-.skills{
-  display:flex;
-
-  flex-wrap:wrap;
-
-  gap:10px;
-
   margin-top:20px;
-}
 
-.skill{
-  padding:9px 14px;
-
-  border-radius:20px;
+  border-radius:14px;
 
   border:1px solid #3a3026;
 
-  background:#100f0e;
-
-  color:#bcb3a5;
-
-  font-size:13px;
+  opacity:.90;
 
   transition:
-    color .25s ease,
-    border-color .25s ease,
-    transform .25s ease;
+    transform .45s ease,
+    opacity .45s ease,
+    filter .45s ease;
 }
 
-.skill:hover{
-  color:#d6b45a;
+.like-card:hover .like-image{
+  transform:scale(1.025);
 
-  border-color:#5a4528;
+  opacity:1;
 
-  transform:translateY(-2px);
+  filter:brightness(1.06);
 }
 
 
@@ -724,6 +665,10 @@ footer{
     grid-template-columns:1fr;
   }
 
+  .like-image{
+    height:200px;
+  }
+
   section{
     padding:50px 0;
   }
@@ -789,7 +734,7 @@ Welcome to my little space.
 </p>
 
 <p class="hero-small">
-Technology • Goals • Things I like
+Technology • Things I Like • Ideas
 </p>
 
 
@@ -833,11 +778,11 @@ Hi, I'm Yani Saal.
 </p>
 
 <p>
-I'm interested in technology, programming, and learning new things. I enjoy discovering how things work, improving myself, and working toward my goals.
+I'm interested in technology, programming, anime, games, and discovering new things.
 </p>
 
 <p>
-This website is a small place where you can get to know me, ask a question, or simply leave a message.
+This website is simply a small place where you can get to know me, explore some of the things I like, or leave a message.
 </p>
 
 </div>
@@ -868,6 +813,8 @@ A few things that usually catch my attention.
 <div class="likes-grid">
 
 
+<!-- PROGRAMMING -->
+
 <div class="like-card">
 
 <div class="like-icon">
@@ -879,11 +826,19 @@ Programming
 </h3>
 
 <p>
-Building things, experimenting with code, and learning how technology works.
+Building things, experimenting with code, and discovering how technology works.
 </p>
+
+<img
+  class="like-image"
+  src="programming.jpg"
+  alt="Dark coding workspace"
+>
 
 </div>
 
+
+<!-- ANIME -->
 
 <div class="like-card">
 
@@ -899,8 +854,16 @@ Anime
 Stories, characters, mystery, adventure, and worlds that are worth getting lost in.
 </p>
 
+<img
+  class="like-image"
+  src="anime.jpg"
+  alt="Anime inspired night scene"
+>
+
 </div>
 
+
+<!-- GAMES -->
 
 <div class="like-card">
 
@@ -916,8 +879,16 @@ Games
 Exploring different worlds, trying new games, and discovering interesting ideas.
 </p>
 
+<img
+  class="like-image"
+  src="games.jpg"
+  alt="Dark gaming setup"
+>
+
 </div>
 
+
+<!-- MUSIC -->
 
 <div class="like-card">
 
@@ -933,96 +904,11 @@ Music
 Songs that fit the mood, the moment, or simply sound good.
 </p>
 
-</div>
-
-
-</div>
-
-</section>
-
-
-
-<!-- =========================
-     CURRENTLY
-========================= -->
-
-<section id="currently">
-
-<div class="section-label">
-03 — CURRENTLY
-</div>
-
-<h2>
-Right Now
-</h2>
-
-<p>
-A few things I'm focusing on these days.
-</p>
-
-
-<div class="current-list">
-
-
-<div class="current-item">
-
-<div class="current-icon">
-💻
-</div>
-
-<div class="current-text">
-
-<strong>
-Learning
-</strong>
-
-<span>
-Web development and programming
-</span>
-
-</div>
-
-</div>
-
-
-<div class="current-item">
-
-<div class="current-icon">
-🌐
-</div>
-
-<div class="current-text">
-
-<strong>
-Building
-</strong>
-
-<span>
-My personal website
-</span>
-
-</div>
-
-</div>
-
-
-<div class="current-item">
-
-<div class="current-icon">
-🧠
-</div>
-
-<div class="current-text">
-
-<strong>
-Improving
-</strong>
-
-<span>
-Learning something new and getting better every day
-</span>
-
-</div>
+<img
+  class="like-image"
+  src="music.jpg"
+  alt="Music and headphones at night"
+>
 
 </div>
 
@@ -1040,7 +926,7 @@ Learning something new and getting better every day
 <section id="goals">
 
 <div class="section-label">
-04 — FUTURE
+03 — FUTURE
 </div>
 
 <h2>
@@ -1051,67 +937,12 @@ My Goals
 <div class="card">
 
 <p>
-I want to keep learning, build things I actually enjoy, and get better at programming and technology. I don't have a perfect plan for everything yet, but I'm figuring it out as I go.
+I want to experience more of the world, discover different cultures, and keep moving toward the things that matter to me.
 </p>
 
 <p>
-For now, the goal is simple: improve, create something cool, and see where it takes me.
+I don't think everything needs to be figured out at once. Sometimes the interesting part is discovering where the path leads.
 </p>
-
-</div>
-
-</section>
-
-
-
-<!-- =========================
-     SKILLS
-========================= -->
-
-<section id="skills">
-
-<div class="section-label">
-05 — LEARNING
-</div>
-
-<h2>
-Skills & Learning
-</h2>
-
-<p>
-Things I'm learning, practicing, or interested in.
-</p>
-
-
-<div class="skills">
-
-<span class="skill">
-HTML
-</span>
-
-<span class="skill">
-CSS
-</span>
-
-<span class="skill">
-JavaScript
-</span>
-
-<span class="skill">
-Python
-</span>
-
-<span class="skill">
-Web Development
-</span>
-
-<span class="skill">
-Technology
-</span>
-
-<span class="skill">
-Problem Solving
-</span>
 
 </div>
 
@@ -1126,7 +957,7 @@ Problem Solving
 <section id="message">
 
 <div class="section-label">
-06 — A NOTE
+04 — A NOTE
 </div>
 
 <h2>
@@ -1157,7 +988,7 @@ Feel free to leave a message, ask me something, or just say hi. There are no wro
 <section id="leave">
 
 <div class="section-label">
-07 — CONTACT
+05 — CONTACT
 </div>
 
 <h2>
