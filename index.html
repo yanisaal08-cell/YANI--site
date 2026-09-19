@@ -1,14 +1,41 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YANI | Personal Space</title>
+
+<title>Yani Saal | Personal Website</title>
+
+<meta
+  name="description"
+  content="Yani Saal — personal website about programming, technology, anime, games, music, goals and things I like."
+>
+
+<meta
+  name="author"
+  content="Yani Saal"
+>
+
+<meta
+  name="robots"
+  content="index, follow"
+>
+
 
 <style>
 
+/* =========================
+   BASIC
+========================= */
+
 *{
   box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
 }
 
 body{
@@ -16,88 +43,177 @@ body{
   background:#0b0b0d;
   color:#eee8dc;
   font-family:Arial,sans-serif;
+  overflow-x:hidden;
 }
+
+
+/* =========================
+   BACKGROUND STARS
+========================= */
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+
+  background:
+    radial-gradient(circle at 10% 20%, rgba(214,180,90,.10) 0 1px, transparent 2px),
+    radial-gradient(circle at 25% 70%, rgba(255,240,190,.08) 0 1px, transparent 2px),
+    radial-gradient(circle at 45% 15%, rgba(255,240,190,.07) 0 1px, transparent 2px),
+    radial-gradient(circle at 65% 80%, rgba(214,180,90,.08) 0 1px, transparent 2px),
+    radial-gradient(circle at 85% 30%, rgba(255,240,190,.08) 0 1px, transparent 2px);
+
+  animation:backgroundStars 7s ease-in-out infinite;
+}
+
+@keyframes backgroundStars{
+
+  0%,100%{
+    opacity:.45;
+  }
+
+  50%{
+    opacity:1;
+  }
+
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
 
 nav{
   position:sticky;
   top:0;
+
   background:#0b0b0ddd;
-  backdrop-filter:blur(10px);
+  backdrop-filter:blur(12px);
+
   padding:18px;
+
   text-align:center;
+
   border-bottom:1px solid #302820;
+
   z-index:10;
 }
 
 nav a{
   color:#aaa49a;
   text-decoration:none;
+
   margin:0 12px;
-  transition:color .25s ease;
+
+  transition:
+    color .25s ease,
+    text-shadow .25s ease;
 }
 
 nav a:hover{
   color:#d6b45a;
-}
 
-main{
-  max-width:850px;
-  margin:auto;
-  padding:60px 22px;
-}
-
-.hero{
-  text-align:center;
-  padding:60px 0;
-}
-
-.hero h1{
-  font-size:58px;
-  margin:0 0 10px;
-  letter-spacing:5px;
-  color:#d6b45a;
-  animation:floatTitle 4s ease-in-out infinite;
-}
-
-.hero p{
-  color:#aaa39a;
-  font-size:18px;
+  text-shadow:
+    0 0 12px rgba(214,180,90,.35);
 }
 
 
 /* =========================
-   FANTASY IMAGE
+   MAIN
+========================= */
+
+main{
+  max-width:900px;
+  margin:auto;
+  padding:40px 22px 70px;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  text-align:center;
+  padding:80px 0 70px;
+}
+
+.hero h1{
+  font-size:64px;
+
+  margin:0 0 12px;
+
+  letter-spacing:7px;
+
+  color:#d6b45a;
+
+  animation:floatTitle 4s ease-in-out infinite;
+
+  text-shadow:
+    0 0 25px rgba(214,180,90,.15);
+}
+
+.hero-subtitle{
+  font-size:19px !important;
+  color:#c0b8aa !important;
+  margin:0 auto 8px;
+}
+
+.hero-small{
+  font-size:14px !important;
+  color:#777168 !important;
+}
+
+
+/* =========================
+   HERO IMAGE
 ========================= */
 
 .hero-image{
   position:relative;
-  margin:30px auto;
-  max-width:720px;
+
+  margin:35px auto;
+
+  max-width:760px;
+
   overflow:hidden;
-  border-radius:20px;
+
+  border-radius:22px;
+
   border:1px solid #3a3026;
-  box-shadow:0 15px 45px rgba(0,0,0,.45);
+
+  box-shadow:
+    0 20px 55px rgba(0,0,0,.55),
+    0 0 30px rgba(214,180,90,.04);
+
   animation:floatImage 6s ease-in-out infinite;
 }
 
 .hero-image img{
   display:block;
+
   width:100%;
   height:auto;
 }
 
 
 /* =========================
-   TWINKLING STARS
+   IMAGE STARS
 ========================= */
 
 .hero-image::after{
   content:"";
+
   position:absolute;
+
   inset:0;
+
   pointer-events:none;
 
   background:
+
     radial-gradient(
       circle at 18% 25%,
       rgba(255,240,190,.8) 0 1px,
@@ -133,7 +249,7 @@ main{
 
 
 /* =========================
-   IMAGE MOVEMENT
+   MOVEMENT
 ========================= */
 
 @keyframes floatImage{
@@ -148,15 +264,22 @@ main{
 
 }
 
+@keyframes floatTitle{
 
-/* =========================
-   STAR MOVEMENT
-========================= */
+  0%,100%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(-5px);
+  }
+
+}
 
 @keyframes twinkleStars{
 
   0%,100%{
-    opacity:.3;
+    opacity:.25;
   }
 
   50%{
@@ -171,35 +294,241 @@ main{
 ========================= */
 
 section{
-  padding:55px 0;
+  padding:65px 0;
+
   border-top:1px solid #25201b;
 }
 
-.card{
-  background:#15120f;
-  border:1px solid #302820;
-  border-radius:18px;
-  padding:25px;
-  margin-top:18px;
-  transition:
-    border-color .3s ease,
-    transform .3s ease;
-}
+.section-label{
+  color:#6f665c;
 
-.card:hover{
-  border-color:#5a4528;
-  transform:translateY(-2px);
+  font-size:12px;
+
+  letter-spacing:3px;
+
+  text-transform:uppercase;
+
+  margin-bottom:8px;
 }
 
 h2{
-  font-size:28px;
-  margin-bottom:15px;
+  font-size:30px;
+
+  margin:0 0 18px;
+
   color:#d8c7a0;
 }
 
 p{
   line-height:1.8;
+
   color:#bbb5aa;
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.card{
+  background:
+    linear-gradient(
+      145deg,
+      #17130f,
+      #12100e
+    );
+
+  border:1px solid #302820;
+
+  border-radius:20px;
+
+  padding:28px;
+
+  margin-top:18px;
+
+  transition:
+    border-color .3s ease,
+    transform .3s ease,
+    box-shadow .3s ease;
+}
+
+.card:hover{
+  border-color:#5a4528;
+
+  transform:translateY(-3px);
+
+  box-shadow:
+    0 12px 35px rgba(0,0,0,.25);
+}
+
+
+/* =========================
+   THINGS I LIKE
+========================= */
+
+.likes-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap:16px;
+
+  margin-top:22px;
+}
+
+.like-card{
+  background:#13110f;
+
+  border:1px solid #302820;
+
+  border-radius:18px;
+
+  padding:23px;
+
+  transition:
+    transform .3s ease,
+    border-color .3s ease,
+    background .3s ease;
+}
+
+.like-card:hover{
+  transform:translateY(-5px);
+
+  border-color:#5a4528;
+
+  background:#18140f;
+}
+
+.like-icon{
+  font-size:28px;
+
+  margin-bottom:12px;
+}
+
+.like-card h3{
+  color:#d8c7a0;
+
+  margin:0 0 8px;
+
+  font-size:19px;
+}
+
+.like-card p{
+  margin:0;
+
+  font-size:14px;
+
+  line-height:1.6;
+
+  color:#918a80;
+}
+
+
+/* =========================
+   CURRENTLY
+========================= */
+
+.current-list{
+  display:grid;
+
+  gap:12px;
+
+  margin-top:20px;
+}
+
+.current-item{
+  display:flex;
+
+  align-items:center;
+
+  gap:15px;
+
+  padding:15px 17px;
+
+  background:#0f0e0d;
+
+  border:1px solid #29231e;
+
+  border-radius:14px;
+}
+
+.current-icon{
+  width:38px;
+  height:38px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  border-radius:10px;
+
+  background:#1c1712;
+
+  font-size:18px;
+}
+
+.current-text{
+  flex:1;
+}
+
+.current-text strong{
+  display:block;
+
+  color:#d8c7a0;
+
+  font-size:14px;
+
+  margin-bottom:3px;
+}
+
+.current-text span{
+  color:#888078;
+
+  font-size:13px;
+}
+
+
+/* =========================
+   SKILLS
+========================= */
+
+.skills{
+  display:flex;
+
+  flex-wrap:wrap;
+
+  gap:10px;
+
+  margin-top:20px;
+}
+
+.skill{
+  padding:9px 14px;
+
+  border-radius:20px;
+
+  border:1px solid #3a3026;
+
+  background:#100f0e;
+
+  color:#bcb3a5;
+
+  font-size:13px;
+
+  transition:
+    color .25s ease,
+    border-color .25s ease,
+    transform .25s ease;
+}
+
+.skill:hover{
+  color:#d6b45a;
+
+  border-color:#5a4528;
+
+  transform:translateY(-2px);
 }
 
 
@@ -211,13 +540,21 @@ input,
 textarea,
 select{
   width:100%;
+
   background:#0d0c0d;
+
   color:#eee8dc;
+
   border:1px solid #3a3026;
+
   border-radius:10px;
+
   padding:13px;
+
   margin:7px 0;
+
   font-size:15px;
+
   font-family:Arial,sans-serif;
 }
 
@@ -225,7 +562,11 @@ input:focus,
 textarea:focus,
 select:focus{
   outline:none;
+
   border-color:#d6b45a;
+
+  box-shadow:
+    0 0 0 3px rgba(214,180,90,.06);
 }
 
 select{
@@ -234,11 +575,13 @@ select{
 
 select option{
   background:#15120f;
+
   color:#eee8dc;
 }
 
 textarea{
   min-height:120px;
+
   resize:vertical;
 }
 
@@ -249,22 +592,34 @@ textarea{
 
 button{
   background:#d6b45a;
+
   color:#17130e;
+
   border:0;
+
   border-radius:10px;
+
   padding:12px 22px;
+
   cursor:pointer;
+
   font-weight:bold;
+
   margin-top:8px;
 
   transition:
     background .25s ease,
-    transform .25s ease;
+    transform .25s ease,
+    box-shadow .25s ease;
 }
 
 button:hover{
   background:#ead28a;
-  transform:translateY(-1px);
+
+  transform:translateY(-2px);
+
+  box-shadow:
+    0 6px 20px rgba(214,180,90,.12);
 }
 
 
@@ -274,12 +629,15 @@ button:hover{
 
 .note{
   font-size:13px;
+
   color:#777168;
+
   margin-top:15px;
 }
 
 .message{
   border-top:1px solid #29231e;
+
   padding:15px 0;
 }
 
@@ -289,6 +647,7 @@ button:hover{
 
 .message span{
   color:#999188;
+
   font-size:13px;
 }
 
@@ -299,25 +658,28 @@ button:hover{
 
 footer{
   text-align:center;
+
   color:#66615b;
-  padding:40px;
+
+  padding:50px 20px;
+
+  border-top:1px solid #25201b;
 }
 
+.footer-name{
+  color:#d6b45a;
 
-/* =========================
-   TITLE MOVEMENT
-========================= */
+  letter-spacing:3px;
 
-@keyframes floatTitle{
+  font-size:15px;
 
-  0%,100%{
-    transform:translateY(0);
-  }
+  margin-bottom:8px;
+}
 
-  50%{
-    transform:translateY(-5px);
-  }
+.footer-text{
+  color:#625d56;
 
+  font-size:13px;
 }
 
 
@@ -327,23 +689,53 @@ footer{
 
 @media(max-width:600px){
 
+  main{
+    padding-left:18px;
+    padding-right:18px;
+  }
+
+  .hero{
+    padding-top:55px;
+  }
+
   .hero h1{
     font-size:45px;
+
+    letter-spacing:5px;
+  }
+
+  nav{
+    padding:15px 8px;
   }
 
   nav a{
-    margin:0 6px;
-    font-size:14px;
+    margin:0 5px;
+
+    font-size:13px;
   }
 
   .hero-image{
     margin:25px auto;
+
     border-radius:16px;
+  }
+
+  .likes-grid{
+    grid-template-columns:1fr;
+  }
+
+  section{
+    padding:50px 0;
+  }
+
+  h2{
+    font-size:26px;
   }
 
 }
 
 </style>
+
 </head>
 
 
@@ -358,13 +750,15 @@ footer{
 
 <a href="#home">Home</a>
 
-<a href="#about">About Me</a>
+<a href="#about">About</a>
 
-<a href="#goals">My Goals</a>
+<a href="#likes">Likes</a>
 
-<a href="#message">A Message</a>
+<a href="#goals">Goals</a>
 
-<a href="#leave">Leave Something</a>
+<a href="#message">Message</a>
+
+<a href="#leave">Contact</a>
 
 </nav>
 
@@ -376,12 +770,26 @@ footer{
      HOME
 ========================= -->
 
-<section id="home" class="hero" style="border:0">
+<section
+  id="home"
+  class="hero"
+  style="border:0"
+>
 
-<h1>YANI</h1>
+<div class="section-label">
+PERSONAL SPACE
+</div>
 
-<p>
+<h1>
+YANI
+</h1>
+
+<p class="hero-subtitle">
 Welcome to my little space.
+</p>
+
+<p class="hero-small">
+Technology • Goals • Things I like
 </p>
 
 
@@ -389,14 +797,14 @@ Welcome to my little space.
 
 <img
   src="file_00000000111881f4af2d25c90d897588.png"
-  alt="Fantasy night"
+  alt="Fantasy night scene from Yani Saal's personal website"
 >
 
 </div>
 
 
-<p>
-Thoughts • Goals • Things I like
+<p class="hero-small">
+A small place on the internet belonging to Yani Saal.
 </p>
 
 </section>
@@ -409,6 +817,10 @@ Thoughts • Goals • Things I like
 
 <section id="about">
 
+<div class="section-label">
+01 — ABOUT
+</div>
+
 <h2>
 About Me
 </h2>
@@ -417,18 +829,203 @@ About Me
 <div class="card">
 
 <p>
-Hi, I'm Yani.
+Hi, I'm Yani Saal.
 </p>
-
 
 <p>
 I'm interested in technology, programming, and learning new things. I enjoy discovering how things work, improving myself, and working toward my goals.
 </p>
 
-
 <p>
 This website is a small place where you can get to know me, ask a question, or simply leave a message.
 </p>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     THINGS I LIKE
+========================= -->
+
+<section id="likes">
+
+<div class="section-label">
+02 — INTERESTS
+</div>
+
+<h2>
+Things I Like
+</h2>
+
+<p>
+A few things that usually catch my attention.
+</p>
+
+
+<div class="likes-grid">
+
+
+<div class="like-card">
+
+<div class="like-icon">
+💻
+</div>
+
+<h3>
+Programming
+</h3>
+
+<p>
+Building things, experimenting with code, and learning how technology works.
+</p>
+
+</div>
+
+
+<div class="like-card">
+
+<div class="like-icon">
+🎌
+</div>
+
+<h3>
+Anime
+</h3>
+
+<p>
+Stories, characters, mystery, adventure, and worlds that are worth getting lost in.
+</p>
+
+</div>
+
+
+<div class="like-card">
+
+<div class="like-icon">
+🎮
+</div>
+
+<h3>
+Games
+</h3>
+
+<p>
+Exploring different worlds, trying new games, and discovering interesting ideas.
+</p>
+
+</div>
+
+
+<div class="like-card">
+
+<div class="like-icon">
+🎵
+</div>
+
+<h3>
+Music
+</h3>
+
+<p>
+Songs that fit the mood, the moment, or simply sound good.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     CURRENTLY
+========================= -->
+
+<section id="currently">
+
+<div class="section-label">
+03 — CURRENTLY
+</div>
+
+<h2>
+Right Now
+</h2>
+
+<p>
+A few things I'm focusing on these days.
+</p>
+
+
+<div class="current-list">
+
+
+<div class="current-item">
+
+<div class="current-icon">
+💻
+</div>
+
+<div class="current-text">
+
+<strong>
+Learning
+</strong>
+
+<span>
+Web development and programming
+</span>
+
+</div>
+
+</div>
+
+
+<div class="current-item">
+
+<div class="current-icon">
+🌐
+</div>
+
+<div class="current-text">
+
+<strong>
+Building
+</strong>
+
+<span>
+My personal website
+</span>
+
+</div>
+
+</div>
+
+
+<div class="current-item">
+
+<div class="current-icon">
+🧠
+</div>
+
+<div class="current-text">
+
+<strong>
+Improving
+</strong>
+
+<span>
+Learning something new and getting better every day
+</span>
+
+</div>
+
+</div>
+
 
 </div>
 
@@ -442,6 +1039,10 @@ This website is a small place where you can get to know me, ask a question, or s
 
 <section id="goals">
 
+<div class="section-label">
+04 — FUTURE
+</div>
+
 <h2>
 My Goals
 </h2>
@@ -450,8 +1051,67 @@ My Goals
 <div class="card">
 
 <p>
-I want to keep learning, build things I actually enjoy, and get better at programming and technology. I don't have a perfect plan for everything yet, but I'm figuring it out as I go. For now, the goal is simple: improve, create something cool, and see where it takes me.
+I want to keep learning, build things I actually enjoy, and get better at programming and technology. I don't have a perfect plan for everything yet, but I'm figuring it out as I go.
 </p>
+
+<p>
+For now, the goal is simple: improve, create something cool, and see where it takes me.
+</p>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     SKILLS
+========================= -->
+
+<section id="skills">
+
+<div class="section-label">
+05 — LEARNING
+</div>
+
+<h2>
+Skills & Learning
+</h2>
+
+<p>
+Things I'm learning, practicing, or interested in.
+</p>
+
+
+<div class="skills">
+
+<span class="skill">
+HTML
+</span>
+
+<span class="skill">
+CSS
+</span>
+
+<span class="skill">
+JavaScript
+</span>
+
+<span class="skill">
+Python
+</span>
+
+<span class="skill">
+Web Development
+</span>
+
+<span class="skill">
+Technology
+</span>
+
+<span class="skill">
+Problem Solving
+</span>
 
 </div>
 
@@ -465,6 +1125,10 @@ I want to keep learning, build things I actually enjoy, and get better at progra
 
 <section id="message">
 
+<div class="section-label">
+06 — A NOTE
+</div>
+
 <h2>
 A Message for You
 </h2>
@@ -473,7 +1137,11 @@ A Message for You
 <div class="card">
 
 <p>
-If you made it this far, thanks for stopping by. Feel free to leave a message, ask me something, or just say hi. There are no wrong answers here — just write whatever comes to mind.
+If you made it this far, thanks for stopping by.
+</p>
+
+<p>
+Feel free to leave a message, ask me something, or just say hi. There are no wrong answers here — just write whatever comes to mind.
 </p>
 
 </div>
@@ -483,10 +1151,14 @@ If you made it this far, thanks for stopping by. Feel free to leave a message, a
 
 
 <!-- =========================
-     LEAVE MESSAGE
+     CONTACT
 ========================= -->
 
 <section id="leave">
+
+<div class="section-label">
+07 — CONTACT
+</div>
 
 <h2>
 Leave Something Here
@@ -494,7 +1166,6 @@ Leave Something Here
 
 
 <div class="card">
-
 
 <p>
 Write your name, choose what brings you here, and leave me a message, an idea, or even just a simple word.
@@ -514,29 +1185,29 @@ Write your name, choose what brings you here, and leave me a message, an idea, o
 
 <select id="reason" required>
 
-  <option value="">
-    What brings you here?
-  </option>
+<option value="">
+What brings you here?
+</option>
 
-  <option value="Just saying hi">
-    Just saying hi 👋
-  </option>
+<option value="Just saying hi">
+Just saying hi 👋
+</option>
 
-  <option value="I have a question">
-    I have a question
-  </option>
+<option value="I have a question">
+I have a question
+</option>
 
-  <option value="I want to share something">
-    I want to share something
-  </option>
+<option value="I want to share something">
+I want to share something
+</option>
 
-  <option value="I want to give feedback">
-    I want to give feedback
-  </option>
+<option value="I want to give feedback">
+I want to give feedback
+</option>
 
-  <option value="Other">
-    Other
-  </option>
+<option value="Other">
+Other
+</option>
 
 </select>
 
@@ -550,7 +1221,7 @@ Write your name, choose what brings you here, and leave me a message, an idea, o
 
 
 <button type="submit">
-Send
+Send Message
 </button>
 
 
@@ -579,7 +1250,19 @@ Your message will be sent through the contact form.
 ========================= -->
 
 <footer>
-© 2026 YANI
+
+<div class="footer-name">
+YANI SAAL
+</div>
+
+<div class="footer-text">
+A small corner of the internet.
+</div>
+
+<div class="footer-text">
+© 2026 Yani Saal
+</div>
+
 </footer>
 
 
@@ -648,87 +1331,96 @@ function render(){
 
 
 
-form.addEventListener("submit", async (e) => {
+form.addEventListener(
+  "submit",
+  async (e) => {
 
-  e.preventDefault();
-
-
-  const name =
-    document.getElementById("name")
-    .value.trim();
+    e.preventDefault();
 
 
-  const reason =
-    document.getElementById("reason")
-    .value;
+    const name =
+      document
+      .getElementById("name")
+      .value
+      .trim();
 
 
-  const message =
-    document.getElementById("guestMessage")
-    .value.trim();
+    const reason =
+      document
+      .getElementById("reason")
+      .value;
 
 
-  if(!name || !reason || !message){
-    return;
-  }
+    const message =
+      document
+      .getElementById("guestMessage")
+      .value
+      .trim();
 
 
-
-  const response = await fetch(
-
-    "https://formspree.io/f/maennvvb",
-
-    {
-
-      method:"POST",
-
-      headers:{
-
-        "Content-Type":
-          "application/json",
-
-        "Accept":
-          "application/json"
-
-      },
+    if(
+      !name ||
+      !reason ||
+      !message
+    ){
+      return;
+    }
 
 
-      body:JSON.stringify({
+    const response =
+      await fetch(
 
-        name:name,
+        "https://formspree.io/f/maennvvb",
 
-        reason:reason,
+        {
 
-        message:message
+          method:"POST",
 
-      })
+          headers:{
+
+            "Content-Type":
+              "application/json",
+
+            "Accept":
+              "application/json"
+
+          },
+
+          body:JSON.stringify({
+
+            name:name,
+
+            reason:reason,
+
+            message:message
+
+          })
+
+        }
+
+      );
+
+
+    if(response.ok){
+
+      alert(
+        "Message sent successfully!"
+      );
+
+      form.reset();
 
     }
 
-  );
+    else{
 
+      alert(
+        "Something went wrong. Please try again."
+      );
 
-
-  if(response.ok){
-
-    alert(
-      "Message sent successfully!"
-    );
-
-    form.reset();
+    }
 
   }
-
-  else{
-
-    alert(
-      "Something went wrong. Please try again."
-    );
-
-  }
-
-});
-
+);
 
 
 render();
