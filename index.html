@@ -38,10 +38,7 @@ position:fixed;
 inset:0;
 z-index:1;
 pointer-events:none;
-background:linear-gradient(
-rgba(8,8,15,.48),
-rgba(8,8,15,.58)
-)
+background:linear-gradient(rgba(8,8,15,.46),rgba(8,8,15,.56))
 }
 
 body:after{
@@ -51,26 +48,29 @@ inset:0;
 z-index:1;
 pointer-events:none;
 background:
-radial-gradient(circle at 15% 20%,rgba(120,90,255,.12),transparent 35%),
-radial-gradient(circle at 85% 75%,rgba(255,120,70,.10),transparent 35%)
+radial-gradient(circle at 15% 20%,rgba(120,90,255,.13),transparent 35%),
+radial-gradient(circle at 85% 75%,rgba(255,120,70,.11),transparent 35%)
 }
 
 nav{
 position:sticky;
 top:0;
-background:rgba(10,10,18,.42);
+background:rgba(10,10,18,.46);
 backdrop-filter:blur(16px);
 -webkit-backdrop-filter:blur(16px);
-padding:17px 10px;
+padding:16px 10px;
 text-align:center;
 border-bottom:1px solid rgba(255,255,255,.12);
-z-index:20
+z-index:20;
+overflow-x:auto;
+white-space:nowrap
 }
 
 nav a{
+display:inline-block;
 color:#eee;
 text-decoration:none;
-margin:0 10px;
+margin:0 9px;
 font-size:14px;
 transition:.25s
 }
@@ -90,7 +90,7 @@ padding:30px 22px 70px
 
 .hero{
 text-align:center;
-padding:70px 0 80px
+padding:70px 0 35px
 }
 
 .profile-image{
@@ -101,18 +101,14 @@ border-radius:50%;
 display:block;
 margin:0 auto 25px;
 border:3px solid rgba(255,255,255,.85);
-box-shadow:
-0 0 0 6px rgba(255,255,255,.08),
-0 15px 45px rgba(0,0,0,.45);
+box-shadow:0 0 0 6px rgba(255,255,255,.08),0 15px 45px rgba(0,0,0,.45);
 animation:profileFloat 5s ease-in-out infinite;
 transition:.35s
 }
 
 .profile-image:hover{
 transform:scale(1.05);
-box-shadow:
-0 0 0 8px rgba(255,255,255,.1),
-0 18px 50px rgba(0,0,0,.55)
+box-shadow:0 0 0 8px rgba(255,255,255,.1),0 18px 50px rgba(0,0,0,.55)
 }
 
 @keyframes profileFloat{
@@ -153,6 +149,34 @@ line-height:1.7;
 font-size:15px
 }
 
+.scroll-down{
+display:inline-flex;
+flex-direction:column;
+align-items:center;
+gap:7px;
+margin-top:32px;
+color:#ddd;
+text-decoration:none;
+font-size:11px;
+letter-spacing:2px;
+opacity:.75;
+transition:.3s
+}
+
+.scroll-down:hover{
+opacity:1
+}
+
+.scroll-arrow{
+font-size:22px;
+animation:scrollBounce 1.7s infinite
+}
+
+@keyframes scrollBounce{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(7px)}
+}
+
 section{
 padding:65px 0;
 border-top:1px solid rgba(255,255,255,.12)
@@ -178,7 +202,7 @@ line-height:1.8;
 color:#ddd
 }
 
-.card,.like-card,.place-card{
+.card,.like-card,.place-card,.current-item,.world-word{
 background:rgba(12,12,22,.48);
 border:1px solid rgba(255,255,255,.14);
 backdrop-filter:blur(15px);
@@ -264,18 +288,16 @@ margin-top:25px
 }
 
 .current-item{
-background:rgba(12,12,22,.48);
-border:1px solid rgba(255,255,255,.14);
 border-radius:18px;
 padding:22px;
 text-align:center;
-backdrop-filter:blur(14px);
 transition:.3s
 }
 
 .current-item:hover{
 transform:translateY(-5px);
-border-color:rgba(255,255,255,.3)
+border-color:rgba(255,255,255,.3);
+background:rgba(15,15,28,.58)
 }
 
 .current-icon{
@@ -283,16 +305,26 @@ font-size:30px;
 margin-bottom:10px
 }
 
-.current-item span{
+.current-title{
 display:block;
-color:#eee;
-font-size:14px
+color:#fff;
+font-size:14px;
+font-weight:bold;
+margin-bottom:5px
+}
+
+.current-detail{
+display:block;
+color:#aaa;
+font-size:12px;
+line-height:1.5
 }
 
 .song-card{
 display:flex;
 align-items:center;
-gap:18px
+gap:18px;
+margin-top:20px
 }
 
 .song-icon{
@@ -331,12 +363,50 @@ padding:11px 18px;
 border-radius:11px;
 font-weight:bold;
 font-size:13px;
-transition:.25s
+transition:.25s;
+white-space:nowrap
 }
 
 .song-button:hover{
 background:#eeeeff;
 transform:translateY(-2px)
+}
+
+.world-intro{
+text-align:center;
+max-width:650px;
+margin:0 auto 25px
+}
+
+.world-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:14px
+}
+
+.world-word{
+border-radius:20px;
+padding:28px 15px;
+text-align:center;
+transition:.35s
+}
+
+.world-word:hover{
+transform:translateY(-6px);
+background:rgba(20,20,35,.62);
+border-color:rgba(255,255,255,.3)
+}
+
+.world-word strong{
+display:block;
+font-size:21px;
+color:#fff;
+margin-bottom:7px
+}
+
+.world-word span{
+font-size:12px;
+color:#aaa
 }
 
 .place-icon{
@@ -355,7 +425,7 @@ bottom:30px;
 transform:translate(-50%,30px);
 opacity:0;
 pointer-events:none;
-background:rgba(10,10,20,.8);
+background:rgba(10,10,20,.86);
 border:1px solid rgba(255,255,255,.2);
 backdrop-filter:blur(15px);
 padding:15px 24px;
@@ -363,12 +433,49 @@ border-radius:15px;
 color:#fff;
 z-index:100;
 transition:.4s;
-white-space:nowrap
+white-space:nowrap;
+box-shadow:0 12px 35px rgba(0,0,0,.35)
 }
 
 .easter-egg.show{
 opacity:1;
 transform:translate(-50%,0)
+}
+
+.top-button{
+position:fixed;
+right:20px;
+bottom:20px;
+width:44px;
+height:44px;
+border-radius:50%;
+background:rgba(15,15,25,.7);
+color:#fff;
+border:1px solid rgba(255,255,255,.18);
+backdrop-filter:blur(12px);
+z-index:50;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:18px;
+cursor:pointer;
+opacity:0;
+visibility:hidden;
+transform:translateY(12px);
+transition:.3s;
+padding:0;
+margin:0
+}
+
+.top-button.show{
+opacity:1;
+visibility:visible;
+transform:translateY(0)
+}
+
+.top-button:hover{
+background:rgba(255,255,255,.15);
+transform:translateY(-3px)
 }
 
 input,textarea,select{
@@ -462,7 +569,14 @@ margin-bottom:8px
 
 .footer-text{
 color:#aaaab5;
-font-size:13px
+font-size:13px;
+margin:4px 0
+}
+
+.footer-built{
+color:#777786;
+font-size:11px;
+margin-top:12px
 }
 
 @media(max-width:600px){
@@ -492,9 +606,7 @@ font-size:17px!important
 }
 
 nav{
-padding:14px 5px;
-white-space:nowrap;
-overflow-x:auto
+padding:14px 5px
 }
 
 nav a{
@@ -507,6 +619,10 @@ grid-template-columns:1fr
 }
 
 .currently-grid{
+grid-template-columns:1fr
+}
+
+.world-grid{
 grid-template-columns:1fr
 }
 
@@ -534,6 +650,11 @@ align-items:flex-start
 margin-left:auto
 }
 
+.top-button{
+right:15px;
+bottom:15px
+}
+
 }
 
 @media(prefers-reduced-motion:reduce){
@@ -558,6 +679,7 @@ transition:none!important
 <a href="#about">About</a>
 <a href="#likes">Likes</a>
 <a href="#currently">Currently</a>
+<a href="#world">Mindset</a>
 <a href="#goals">Goals</a>
 <a href="#places">Places</a>
 <a href="#message">Message</a>
@@ -574,14 +696,19 @@ transition:none!important
 
 <h1>YANI</h1>
 
-<p class="hero-subtitle">Welcome to my little space.</p>
+<p class="hero-subtitle">A little piece of my world.</p>
 
-<p class="hero-small">Technology • Things I Like • Ideas</p>
+<p class="hero-small">Technology • Anime • Music • Ideas</p>
 
 <p class="hero-description">
 A small place on the internet where you can get to know me,
 explore the things I like, and leave something behind.
 </p>
+
+<a href="#about" class="scroll-down">
+<span>EXPLORE</span>
+<span class="scroll-arrow">↓</span>
+</a>
 
 </section>
 
@@ -700,18 +827,35 @@ or simply sound good.
 <div class="currently-grid">
 
 <div class="current-item">
+
 <div class="current-icon">🎧</div>
-<span>Listening to music</span>
+
+<span class="current-title">Listening</span>
+
+<span class="current-detail">After Dark — Mr.Kitty</span>
+
 </div>
 
+
 <div class="current-item">
+
 <div class="current-icon">📺</div>
-<span>Watching anime</span>
+
+<span class="current-title">Watching</span>
+
+<span class="current-detail">Anime & interesting stories</span>
+
 </div>
 
+
 <div class="current-item">
-<div class="current-icon">🌌</div>
-<span>Thinking about the future</span>
+
+<div class="current-icon">💻</div>
+
+<span class="current-title">Building</span>
+
+<span class="current-detail">My personal website</span>
+
 </div>
 
 </div>
@@ -723,7 +867,7 @@ or simply sound good.
 
 <div class="song-info">
 
-<div class="song-label">FAVORITE SONG</div>
+<div class="song-label">CURRENT VIBE</div>
 
 <h3>After Dark</h3>
 
@@ -744,9 +888,52 @@ Listen
 </section>
 
 
+<section id="world">
+
+<div class="section-label">04 — MINDSET</div>
+
+<h2>My World</h2>
+
+<p class="world-intro">
+Three things that describe the way I like to move through life.
+</p>
+
+<div class="world-grid">
+
+<div class="world-word">
+
+<strong>Think.</strong>
+
+<span>Question things. Stay curious.</span>
+
+</div>
+
+
+<div class="world-word">
+
+<strong>Create.</strong>
+
+<span>Turn ideas into something real.</span>
+
+</div>
+
+
+<div class="world-word">
+
+<strong>Explore.</strong>
+
+<span>Discover places, people and ideas.</span>
+
+</div>
+
+</div>
+
+</section>
+
+
 <section id="goals">
 
-<div class="section-label">04 — FUTURE</div>
+<div class="section-label">05 — FUTURE</div>
 
 <h2>My Goals</h2>
 
@@ -770,7 +957,7 @@ Sometimes the interesting part is discovering where the path leads.
 
 <section id="places">
 
-<div class="section-label">05 — PLACES</div>
+<div class="section-label">06 — PLACES</div>
 
 <h2>Places I Want to See</h2>
 
@@ -826,7 +1013,7 @@ I haven't discovered yet.
 
 <section id="message">
 
-<div class="section-label">06 — A NOTE</div>
+<div class="section-label">07 — A NOTE</div>
 
 <h2>A Message for You</h2>
 
@@ -847,7 +1034,7 @@ just write whatever comes to mind.
 
 <section id="leave">
 
-<div class="section-label">07 — CONTACT</div>
+<div class="section-label">08 — CONTACT</div>
 
 <h2>Leave Something Here</h2>
 
@@ -918,8 +1105,16 @@ Your message will be sent through the contact form.
 
 
 <div id="easterEgg" class="easter-egg">
-You found something. 👀
+You weren't supposed to find this. 👀
 </div>
+
+
+<button
+id="topButton"
+class="top-button"
+aria-label="Back to top">
+↑
+</button>
 
 
 <footer>
@@ -931,7 +1126,11 @@ A small corner of the internet.
 </div>
 
 <div class="footer-text">
-© 2026 Yani Saal
+Think. Create. Explore.
+</div>
+
+<div class="footer-built">
+Built by Yani • 2026
 </div>
 
 </footer>
@@ -941,10 +1140,12 @@ A small corner of the internet.
 
 const form=document.getElementById("guestForm");
 const list=document.getElementById("messages");
+const topButton=document.getElementById("topButton");
 
 let messages=JSON.parse(
 localStorage.getItem("yani_messages")||"[]"
 );
+
 
 function escapeHtml(s){
 
@@ -960,6 +1161,7 @@ c=>({
 );
 
 }
+
 
 function render(){
 
@@ -980,6 +1182,7 @@ ${escapeHtml(x.reason)} • ${escapeHtml(x.date)}
 `).join("");
 
 }
+
 
 form.addEventListener("submit",async e=>{
 
@@ -1066,11 +1269,37 @@ egg.classList.remove("show");
 
 clicks=0;
 
-},3000);
+},3500);
 
 }
 
 });
+
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>500){
+
+topButton.classList.add("show");
+
+}else{
+
+topButton.classList.remove("show");
+
+}
+
+});
+
+
+topButton.addEventListener("click",()=>{
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+});
+
 
 render();
 
